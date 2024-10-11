@@ -15,7 +15,7 @@ const Card = ({ todo, setTodos }: { todo: todo, setTodos:Dispatch<SetStateAction
     }))
   };
   const deleteTodo = async (id: string) => {
-    await axios.patch(URL + `/${id}`);
+    await axios.delete(URL + `/${id}`);
     setTodos(prev => prev.filter(todo => todo.id !== id))
   };
   return (
