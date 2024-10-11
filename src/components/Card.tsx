@@ -1,5 +1,6 @@
 import { todo, todoList } from "@/types/todo";
 import axios from "axios";
+import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
 
 const URL = "http://localhost:4000/todos";
@@ -19,22 +20,24 @@ const Card = ({ todo, setTodos }: { todo: todo, setTodos:Dispatch<SetStateAction
     setTodos(prev => prev.filter(todo => todo.id !== id))
   };
   return (
-    <div className="w-[200px] border">
+    <Link href={`/todos/${todo.id}`} className="w-[200px] border">
       <p>{todo.id.slice(0,4)}</p>
       <p>{todo.contents}</p>
       <button
         className="border mr-4"
-        onClick={() => {
+        onClick={(e) => {
+          e.stopPropagation()
           updateTodo(todo);
         }}
       >
         {todo.isDone ? "취소" : "완료"}
       </button>
       <button className="border"
-        onClick={() => {
+        onClick={(e) => {
+          e.stopPropagation()
           deleteTodo(todo.id);
         }}>삭제</button>
-    </div>
+    </Link>
   );
 };
 
