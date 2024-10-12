@@ -26,7 +26,7 @@ const Card = ({ todo, setTodos }: { todo: todo, setTodos:Dispatch<SetStateAction
       <button
         className="border mr-4"
         onClick={(e) => {
-          e.stopPropagation()
+          e.preventDefault()
           updateTodo(todo);
         }}
       >
@@ -34,7 +34,7 @@ const Card = ({ todo, setTodos }: { todo: todo, setTodos:Dispatch<SetStateAction
       </button>
       <button className="border"
         onClick={(e) => {
-          e.stopPropagation()
+          e.preventDefault()
           deleteTodo(todo.id);
         }}>삭제</button>
     </Link>
